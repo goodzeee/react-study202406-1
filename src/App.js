@@ -1,6 +1,9 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React from 'react';
+import Hello from './components/Hello';
+import Bye from './components/Bye';
+import Greet from './components/Greet';
 
 function App() {
 
@@ -19,14 +22,10 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <h1>{hello}</h1>
-        {$h2}
-      </div>
-      <div className='noname'>
-        <input type="text" />
-        <label htmlFor=""></label>
-      </div>
+      <Bye />
+      <Hello />
+      <Bye />
+      <Greet />
     </>
   );
 }
