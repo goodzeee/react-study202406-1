@@ -4,8 +4,6 @@ import "./ChartBar.css";
 
 const ChartBar = ({ label, currentMonthValue, totalValue }) => {
 
-
-
   // 인라인 스타일 객체
   // const fillStyle = {
   //   height: '60%'
