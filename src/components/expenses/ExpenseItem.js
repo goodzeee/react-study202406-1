@@ -4,7 +4,6 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItem = ({ date, title, price: exPrice }) => {
-
   // let itemTitle = title;
 
   // useState는 컴포넌트의 상태값을 관리하며 이 상태값은 렌더링에 영향을 미침
@@ -20,25 +19,23 @@ const ExpenseItem = ({ date, title, price: exPrice }) => {
   const formattedPrice = new Intl.NumberFormat('ko-KR').format(exPrice);
 
   // 이벤트 핸들러 선언
-  const clickHandler = e => {
-
+  const clickHandler = (e) => {
     /*
       useState가 관리하는 상태값은 반드시 setter로만 변경해야 합니다.
     */
     setItemTitle('짜장면');
   };
 
-  console.log('렌더링 전');
+  // console.log('렌더링 전');
   return (
-      <Card className='expense-item'>
-        <ExpenseDate exDate={date} />
-        <div className='expense-item__description'>
-          <h2>{itemTitle}</h2>
-          <div className='expense-item__price'>{formattedPrice}원</div>
-        </div>
-        <button id='btn' onClick={clickHandler}>제목수정</button>
-      </Card>
-  )
-}
+    <Card className="expense-item">
+      <ExpenseDate exDate={date} />
+      <div className="expense-item__description">
+        <h2>{itemTitle}</h2>
+        <div className="expense-item__price">{formattedPrice}원</div>
+      </div>
+    </Card>
+  );
+};
 
-export default ExpenseItem
+export default ExpenseItem;
