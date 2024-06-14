@@ -24,13 +24,20 @@ const App = () => {
     setGoals([...goals, goalObject]);
   };
 
+  // CouseItem에게 전달할 함수
+  const deleteGoalHandler = (id) => {
+    // console.log('id: ', id);
+    // goals.splice(goals.findIndex(g => g.id === id), 1);
+    setGoals(goals.filter(g => g.id !== id));
+  };
+
   return (
     <div>
       <section id="goal-form">
         <CourseInput onAdd={addGoalHandler} />
       </section>
       <section id="goals">
-        <CourseList items={goals} />
+        <CourseList items={goals} onDelete={deleteGoalHandler} />
       </section>
     </div>
   );
