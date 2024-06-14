@@ -70,8 +70,10 @@ const ExpenseForm = ({ onAdd }) => {
     console.log(userInput);
 
     // App.js에게 받은 함수를 호출
-    onAdd(userInput);
-
+    onAdd({
+      ...userInput,
+      date: new Date(userInput.date)
+    });
 
     // form input 비우기
     setUserInput({
