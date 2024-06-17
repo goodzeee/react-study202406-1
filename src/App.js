@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import CourseInput from './components/CourseGoals/CourseInput';
 import CourseList from './components/CourseGoals/CourseList';
 import './App.css';
