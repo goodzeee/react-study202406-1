@@ -6,10 +6,25 @@ import UserList from './components/Users/UserList';
 
 const App = () => {
 
+  // 회원들이 저장될 배열
+  const [userList, setUserList] = useState([]);
+
+  const addUserHandler = user => {
+
+    console.log(user);
+    setUserList(prev => [
+      ...prev, 
+      {
+        ...user, 
+        id: Math.random().toString()
+      }
+    ]);
+  };
+
   return (
     <>
-      <AddUsers />
-      <UserList />
+      <AddUsers onAddUser={addUserHandler} />
+      <UserList users={userList} />
     </>
   );
 };
