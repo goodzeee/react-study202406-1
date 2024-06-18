@@ -7,7 +7,7 @@ import Button from '../UI/Button';
 const Login = ({ onLogin }) => {
 
   // 로그인 한글자한글자에 리렌더링 반복된다
-  console.log('렌더링 수행 ~');
+  //console.log('렌더링 수행 ~');
   // 사용자가 입력한 이메일을 상태관리
   const [enteredEmail, setEnteredEmail] = useState('');
   // 이메일 입력값이 정상인지 유무 확인
@@ -50,15 +50,24 @@ const Login = ({ onLogin }) => {
   // 2. 배열을 비워둘 시 리렌더링될 때마다 반복 호출된다.
   // 3. props를 넣어 특정 배열 값을 넣어 그때만 반복 호출되도록 한다.
   useEffect(() => {
-    console.log('useEffect call in Login.js');
-    setFormIsValid(
-      enteredPassword.trim().length > 6 && enteredEmail.includes('@')
-    );
 
+    // ⭐setTimeout 디바운싱 - 무한요청으로 과부하 막기 위한 시간 주기 !!
+    const timer = setTimeout(() => {
+      console.log('useEffect call in Login.js');
+      setFormIsValid(
+        enteredPassword.trim().length > 6 && enteredEmail.includes('@')
+      );
+    }, 2000);
+
+    // ⭐디바운싱 처리로 마지막 요청된 하나만 가져오기 위해 clearTimeout 해주기
+    // cleanup 함수는 컴포넌트가 업데이트되거나 사라지기 전에 실행
     return () => {
-      console.log('clean up !');
+      clearTimeout(timer);
+      //console.log('cleanup: ', enteredEmail);
     };
   }, [enteredEmail, enteredPassword]);
+
+  //console.log('render: ', enteredEmail);
 
   return (
     <Card className={styles.login}>
