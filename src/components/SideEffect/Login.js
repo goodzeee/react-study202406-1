@@ -33,8 +33,8 @@ const emailReducer = (state, action) => {
     }
   }
   // return {inputValue: action.val};   // 변경 후 상태객체
-  return {inputValue: action.val,
-          isValid: state.val.includes('@')};  // 검증값 - 변경 전 값에 @ 포함 검증
+  // return {inputValue: action.val,
+  //         isValid: state.val.includes('@')};  // 검증값 - 변경 전 값에 @ 포함 검증
 };
 
 const passwordReducer = (state, action) => {
@@ -149,9 +149,10 @@ const Login = ({ onLogin }) => {
     const timer = setTimeout(() => {
       console.log('useEffect call in Login.js');
       setFormIsValid(
-        emailIsValid > 6 && passwordIsValid
+        emailIsValid && passwordIsValid
       );
-    }, 2000);
+    }, 1000);
+
 
     // ⭐디바운싱 처리로 마지막 요청된 하나만 가져오기 위해 clearTimeout 해주기
     // cleanup 함수는 컴포넌트가 업데이트되거나 사라지기 전에 실행
